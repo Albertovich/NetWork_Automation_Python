@@ -1,7 +1,7 @@
 import telnetlib
 import getpass
 
-HOST = "192.168.122.72"
+HOST = "localhost"
 user = input("Enter your telnet username: ")
 password = getpass.getpass()
 
@@ -9,7 +9,7 @@ f = open ('myswitches')
 
 for IP in f:
         IP=IP.strip()
-        print ("Configuring Switch" + (IP))
+        print ("Configuring Switch: " + (IP))
         HOST = IP
         tn = telnetlib.Telnet(HOST)
         tn.read_until(b"Username: ")

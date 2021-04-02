@@ -5,7 +5,7 @@ HOST = "192.168.122.72"
 user = input("Enter your telnet username: ")
 password = getpass.getpass()
 
-f = open (myswitches)
+f = open ('myswitches')
 
 for IP in f:
         IP=IP.strip()
