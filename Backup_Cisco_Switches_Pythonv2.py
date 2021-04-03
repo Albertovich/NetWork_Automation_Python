@@ -23,7 +23,7 @@ for IP in f:
         tn.write(b'exit\n')
 
         readoutput = tn.read_all()
-        saveoutput = open("switch" + HOST, "w")
+        saveoutput = open("switch_" + HOST, "w")
         saveoutput.write(readoutput.decode('ascii'))
         saveoutput.write("\n")
         saveoutput.close
