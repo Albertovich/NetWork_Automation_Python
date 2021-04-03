@@ -1,15 +1,17 @@
 import telnetlib
 import getpass
+import time
 
 HOST = "localhost"
 user = input("Enter your telnet username: ")
 password = getpass.getpass()
+timestr = time.strftime("%Y%m%d-%H%M%S")
 
 f = open ('myswitches')
 
 for IP in f:
         IP=IP.strip()
-        print ("Configuring Switch: " + (IP))
+        print ("Creating Backup for: " + (IP))
         HOST = IP
         tn = telnetlib.Telnet(HOST)
         tn.read_until(b"Username: ")
@@ -23,7 +25,7 @@ for IP in f:
         tn.write(b'exit\n')
 
         readoutput = tn.read_all()
-        saveoutput = open("switch_" + HOST, "w")
+        saveoutput = open(f"switch_{HOST}_" + timestr, "w")
         saveoutput.write(readoutput.decode('ascii'))
         saveoutput.write("\n")
         saveoutput.close
